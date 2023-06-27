@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="add_word">Agregar palabra</string>
+    <string name="delete_words">Eliminar palabras</string>
 </resources>

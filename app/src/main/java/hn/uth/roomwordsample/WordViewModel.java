@@ -9,7 +9,6 @@ import java.util.List;
 
 public class WordViewModel extends AndroidViewModel {
     private WordRepository mRepository;
-
     private final LiveData<List<Word>> mAllWords;
 
     public WordViewModel (Application application) {
@@ -18,7 +17,17 @@ public class WordViewModel extends AndroidViewModel {
         mAllWords = mRepository.getAllWords();
     }
 
-    LiveData<List<Word>> getAllWords() { return mAllWords; }
+    LiveData<List<Word>> getAllWords() {
+        return mAllWords;
+    }
 
-    public void insert(Word word) { mRepository.insert(word); }
+    public void insert(String word, String sentence) {
+        mRepository.insert(word, sentence);
+    }
+
+    public void deleteAllWords() {
+        mRepository.deleteAllWords();
+    }
+
+
 }

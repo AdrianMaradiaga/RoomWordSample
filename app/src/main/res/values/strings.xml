@@ -2,6 +2,8 @@
     <string name="app_name">RoomWordSample</string>
     <string name="add_word">Agregar palabra</string>
     <string name="hint_word">Palabra...</string>
+    <string name="hint_sentence">Ingresa una oracion de ejemplo</string>
     <string name="button_save">Guardar</string>
     <string name="empty_not_saved">La palabra no ha sido guardada, porque esta vacio.</string>
+    <string name="delete_words">Eliminar palabras</string>
 </resources>

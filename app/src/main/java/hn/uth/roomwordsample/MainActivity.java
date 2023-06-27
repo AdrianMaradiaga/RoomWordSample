@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -38,19 +39,34 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, NewWordActivity.class);
             startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
         });
+
+        FloatingActionButton fabDelete = findViewById(R.id.fabDelete);
+        fabDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mWordViewModel.deleteAllWords();
+                Toast.makeText(MainActivity.this, "Todos los registros eliminados", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Word word = new Word(data.getStringExtra(NewWordActivity.EXTRA_REPLY));
-            mWordViewModel.insert(word);
-        } else {
-            Toast.makeText(
-                    getApplicationContext(),
-                    R.string.empty_not_saved,
-                    Toast.LENGTH_LONG).show();
+            String wordString = data.getStringExtra(NewWordActivity.EXTRA_REPLY);
+            String sentenceString = data.getStringExtra(NewWordActivity.EXTRA_REPLY_SENTENCE);
+
+            if (wordString != null && !wordString.isEmpty()) {
+                mWordViewModel.insert(wordString, sentenceString);
+            } else {
+                Toast.makeText(
+                        getApplicationContext(),
+                        R.string.empty_not_saved,
+                        Toast.LENGTH_LONG).show();
+            }
         }
     }
+
+
 }

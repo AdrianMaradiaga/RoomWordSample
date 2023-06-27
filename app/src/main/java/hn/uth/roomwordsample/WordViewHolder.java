@@ -9,14 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 class WordViewHolder extends RecyclerView.ViewHolder {
     private final TextView wordItemView;
+    private TextView sentenceTextView;
+
 
     private WordViewHolder(View itemView) {
         super(itemView);
-        wordItemView = itemView.findViewById(R.id.textView);
+        wordItemView = itemView.findViewById(R.id.textViewWord);
+        sentenceTextView = itemView.findViewById(R.id.textViewSentence);
     }
 
-    public void bind(String text) {
-        wordItemView.setText(text);
+    public void bind(Word word) {
+        wordItemView.setText(word.getWord());
+        sentenceTextView.setText(word.getSentence());
     }
 
     static WordViewHolder create(ViewGroup parent) {

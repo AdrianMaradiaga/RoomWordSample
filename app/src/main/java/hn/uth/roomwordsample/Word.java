@@ -13,7 +13,20 @@ public class Word {
     @ColumnInfo(name = "word")
     private String mWord;
 
-    public Word(@NonNull String word) {this.mWord = word;}
+    @NonNull
+    @ColumnInfo(name = "sentence")
+    private String mSentence;
 
-    public String getWord(){return this.mWord;}
+    public Word(@NonNull String word, String sentence) {
+        this.mWord = word;
+        this.mSentence = sentence;
+    }
+
+    public String getWord(){
+        return this.mWord;
+    }
+
+    public String getSentence() {
+        return this.mSentence;
+    }
 }

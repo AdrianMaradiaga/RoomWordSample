@@ -28,9 +28,15 @@ class WordRepository {
 
     // You must call this on a non-UI thread or your app will throw an exception. Room ensures
     // that you're not doing any long running operations on the main thread, blocking the UI.
-    void insert(Word word) {
+    void insert(String word, String sentence) {
+        Word newWord = new Word(word, sentence);
         WordRoomDatabase.databaseWriteExecutor.execute(() -> {
-            mWordDao.insert(word);
+            mWordDao.insert(newWord);
+        });
+    }
+    public void deleteAllWords() {
+        WordRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mWordDao.deleteAll();
         });
     }
 }
