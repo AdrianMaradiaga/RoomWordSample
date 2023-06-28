@@ -28,7 +28,6 @@
         android:hint="@string/hint_sentence"
         android:inputType="textAutoComplete"
         android:minHeight="48dp"
-        android:textColorHint="#8D6E63"
         android:textSize="18sp"
         android:autofillHints=""
         tools:ignore="VisualLintTextFieldSize" />
